@@ -3,13 +3,8 @@ kind: Ingress
 metadata:
   name: app-ingress
   namespace: app
-  
 spec:
   ingressClassName: nginx
-  tls:
-  - hosts:
-    - cms.pfe-project.com
-    secretName: axia-production-tls
   rules:
   - host: cms.pfe-project.com
     http:
