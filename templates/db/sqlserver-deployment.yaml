@@ -13,6 +13,8 @@ spec:
       labels:
         app: mysql
     spec:
+      securityContext:
+        fsGroup: 10001
       containers:
       - name: mysql
         image: mysql:5.7
