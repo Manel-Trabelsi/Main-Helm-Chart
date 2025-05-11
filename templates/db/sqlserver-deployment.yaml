@@ -28,13 +28,12 @@ spec:
             echo "🔧 Setting permissions for MySQL data directory..."
             if [ "$(ls -A /var/lib/mysql)" ]; then
               echo "⚠️ Data exists, cleaning up..."
-              rm -rf /var/lib/mysql/*  # <-- Complete cleanup
-              mkdir -p /var/lib/mysql/mysql
-              echo "⚠️ MySQL data directory cleaned."
+              rm -rf /var/lib/mysql/*
+              echo "✅ MySQL data directory cleaned."
             else
               echo "⚠️ Data directory is empty, preparing for MySQL initialization..."
-              mkdir -p /var/lib/mysql/mysql
             fi
+            mkdir -p /var/lib/mysql
             chown -R 999:999 /var/lib/mysql
             chmod -R 777 /var/lib/mysql
         volumeMounts:
@@ -64,7 +63,7 @@ spec:
         - |
           if [ ! -d "/var/lib/mysql/mysql" ]; then
             echo "⚠️ Data directory is empty, initializing MySQL..."
-            mysqld --initialize-insecure --user=mysql
+            mysqld --initialize --user=mysql
           fi
           echo "✅ Starting MySQL server..."
           exec mysqld
