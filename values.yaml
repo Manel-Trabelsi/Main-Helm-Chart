@@ -1,6 +1,6 @@
 image:
   Bee:
-    repository: docker.io/axia2025/axia
+    repository: docker.io/maamounmribah
     Tag: app-07ac1280
   
   
