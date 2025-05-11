@@ -19,6 +19,8 @@ spec:
       initContainers:
       - name: init-mysql-permissions
         image: busybox
+        securityContext:
+          runAsUser: 0    # <--- This makes it run as root
         command:
           - sh
           - "-c"
