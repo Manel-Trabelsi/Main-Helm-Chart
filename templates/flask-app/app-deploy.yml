@@ -34,9 +34,7 @@ spec:
           value: "development"
         - name: FLASK_CONFIG
           value: "development"
-        volumeMounts:
-        - name: app-volume
-          mountPath: /app
+        
       
         
         
