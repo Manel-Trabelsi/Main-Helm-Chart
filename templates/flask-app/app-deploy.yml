@@ -26,7 +26,20 @@ spec:
             memory: "256Mi"
             cpu: "250m"
         ports:
-        - containerPort: 80
+        - containerPort: 5000
+        env:
+        - name: FLASK_APP
+          value: "run.py"
+        - name: FLASK_ENV
+          value: "development"
+        - name: FLASK_CONFIG
+          value: "development"
+        volumeMounts:
+        - name: app-volume
+          mountPath: /app
+      volumes:
+      - name: app-volume
+        emptyDir: {}
         
         
 
