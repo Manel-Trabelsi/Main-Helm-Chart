@@ -30,6 +30,15 @@ spec:
         volumeMounts:
         - name: mysql-storage
           mountPath: /var/lib/mysql
+        command:
+        - sh
+        - "-c"
+        - |
+          if [ ! -d "/var/lib/mysql/mysql" ]; then
+            echo "⚠️ Data directory is empty, initializing MySQL..."
+            mysqld --initialize-insecure --user=mysql
+          fi
+          exec mysqld
       volumes:
       - name: mysql-storage
         persistentVolumeClaim:
