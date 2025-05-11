@@ -1,6 +1,6 @@
 image:
-  Bee:
-    repository: docker.io/maamounmribah/pfe-project
+  App:
+    repository: docker.io/trabelsihammamimanel/pfe-project
     Tag: app-07ac1280
   
   
