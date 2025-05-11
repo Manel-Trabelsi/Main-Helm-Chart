@@ -26,12 +26,14 @@ spec:
           - "-c"
           - |
             echo "🔧 Setting permissions for MySQL data directory..."
-            # Full cleanup if leftover data exists
             if [ "$(ls -A /var/lib/mysql)" ]; then
-              echo "⚠️ Data exists, resetting permissions..."
+              echo "⚠️ Data exists, cleaning up..."
+              rm -rf /var/lib/mysql/*  # <-- Complete cleanup
+              mkdir -p /var/lib/mysql/mysql
+              echo "⚠️ MySQL data directory cleaned."
             else
               echo "⚠️ Data directory is empty, preparing for MySQL initialization..."
-              mkdir -p /var/lib/mysql
+              mkdir -p /var/lib/mysql/mysql
             fi
             chown -R 999:999 /var/lib/mysql
             chmod -R 777 /var/lib/mysql
