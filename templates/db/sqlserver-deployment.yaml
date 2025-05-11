@@ -16,6 +16,19 @@ spec:
       securityContext:
         runAsUser: 999
         fsGroup: 999
+      initContainers:
+      - name: init-mysql-permissions
+        image: busybox
+        command:
+          - sh
+          - "-c"
+          - |
+            echo "🔧 Setting permissions for MySQL data directory..."
+            chown -R 999:999 /var/lib/mysql
+            chmod -R 777 /var/lib/mysql
+        volumeMounts:
+        - name: mysql-storage
+          mountPath: /var/lib/mysql
       containers:
       - name: mysql
         image: mysql:5.7
