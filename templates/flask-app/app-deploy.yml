@@ -34,11 +34,7 @@ spec:
           value: "development"
         - name: FLASK_CONFIG
           value: "development"
-        - name: SQLALCHEMY_DATABASE_URI
-          valueFrom:
-            secretKeyRef:
-              name: mysql-credentials
-              key: MYSQL_CONNECTION_STRING
+        
         
       
         
