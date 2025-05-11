@@ -3,18 +3,15 @@ kind: Ingress
 metadata:
   name: app-ingress
   namespace: app
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-production-issuer
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/hsts-include-subdomains: "true"
+  
 spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - bee.int-infra.com
+    - cms.pfe-project.com
     secretName: axia-production-tls
   rules:
-  - host: bee.int-infra.com
+  - host: cms.pfe-project.com
     http:
       paths:
       - path: /
