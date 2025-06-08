@@ -1,7 +1,7 @@
 image:
   App:
     repository: docker.io/trabelsihammamimanel/pfe-project
-    Tag: app-007693a5
+    Tag: app-8f252e79
   
   
 replicas:
