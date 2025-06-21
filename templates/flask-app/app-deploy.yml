@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: app-deployment
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicas.App }}
   selector:
     matchLabels:
       app: app
@@ -12,11 +12,13 @@ spec:
       labels:
         app: app
     spec:
+      {{- if .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml .Values.imagePullSecrets | nindent 8 }}
+      {{- end }}
       containers:
       - name: app
-        image: "{{ .Values.image.App.repository }}:{{ .Values.image.App.Tag }}"
+        image: "{{ .Values.image.App.repository }}:{{ .Values.image.App.tag }}"
         imagePullPolicy: Always
         resources:
           requests:
@@ -34,10 +36,3 @@ spec:
           value: "development"
         - name: FLASK_CONFIG
           value: "development"
-        
-        
-      
-        
-        
-
-

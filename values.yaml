@@ -1,9 +1,8 @@
 image:
   App:
     repository: docker.io/trabelsihammamimanel/pfe-project
-    Tag: app-02b556f4
-  
-  
+    tag: app-v6
+
 replicas:
   App: 2
 
@@ -11,9 +10,10 @@ hpa:
   App:
     minReplicas: 1
     maxReplicas: 3
-  
 
 imagePullSecrets:
   - name: regcred
-  
 
+service:
+  type: NodePort
+imagePullSecretData: ewogICJhdXRocyI6IHsKICAgICJodHRwczovL2luZGV4LmRvY2tlci5pby92MS8iOiB7CiAgICAgICJhdXRoIjogImRISmhZbVZzYzJsb1lXMXRZVzFwYldGdVpXdzZaR05yY2w5d1lYUmZPVU5YTTNod1pXcEtRblZtUVRCeE1ITnlZVXhuVUU4MU1YcHIiCiAgICB9CiAgfQp9Cg==
